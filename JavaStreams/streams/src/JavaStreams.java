@@ -94,9 +94,15 @@ public class JavaStreams {
         //The Rolling Stones
         //The Allman Brothers
         //The Rolling Stones
-        */
 
         //10. Stream rows from CSV file and count
+        //data.txt
+        //A,12,3.7
+        //B,17,2.8
+        //C,14,1.9
+        //D,23,2.7
+        //E
+        //F,18,3.4
         Stream<String> rows1 = Files.lines(Paths.get("data.txt"));
         int rowCount = (int) rows1
                 .map(x -> x.split(","))
@@ -105,6 +111,21 @@ public class JavaStreams {
 
         System.out.println(rowCount + " rows.");
         rows1.close();
+        //5 rows.
+        */
+
+        //11. Stream rows from CSV file, parse data from rows
+        Stream<String> rows2 = Files.lines(Paths.get("data.txt"));
+        rows2
+           .map(x -> x.split(","))
+           .filter(x -> x.length == 3)
+           .filter(x -> Integer.parseInt(x[1]) > 15)
+           .forEach(x -> System.out.println(x[0] + " " + x[1] + " " + x[2]));
+
+        rows2.close();
+        //B 17 2.8
+        //D 23 2.7
+        //F 18 3.4
    }
 
 
