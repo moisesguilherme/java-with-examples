@@ -1,6 +1,8 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class JavaStreams {
@@ -69,7 +71,7 @@ public class JavaStreams {
             .map(String::toLowerCase)
             .filter(x -> x.startsWith("a"))
             .forEach(System.out::println);
-        */
+
 
         // 8. Stream rows form text file, sort, filter and print
         Stream<String> bands = Files.lines(Paths.get("bands.txt"));
@@ -78,6 +80,22 @@ public class JavaStreams {
            .filter(x -> x.length() > 13)
            .forEach(System.out::println);
         bands.close();
+        //The Allman Brothers
+        //The Rolling Stones
+        //The Rolling Stones
+        */
+
+        //9. Stream rows from txt file and save to List
+        List<String> bands2 = Files.lines(Paths.get("bands.txt"))
+                .filter(x -> x.contains("The"))
+                .collect(Collectors.toList());
+
+        bands2.forEach(x -> System.out.println(x));
+        //The Beatles
+        //The Rolling Stones
+        //The Allman Brothers
+        //The Rolling Stones
+
 
    }
 
