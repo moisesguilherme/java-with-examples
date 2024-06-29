@@ -1,4 +1,5 @@
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class JavaStreams {
 
@@ -29,7 +30,15 @@ public class JavaStreams {
         );
         // 10
 
-    }
+        System.out.println();
+
+        // 4. Stream.of, sorted and findFirst
+        Stream.of("Maria", "José", "Marcos", "Alberto")
+                .sorted()
+                .findFirst()
+                .ifPresent(System.out::println);
+        // Alberto
+   }
 
 
 }
