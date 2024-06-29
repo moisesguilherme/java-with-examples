@@ -83,7 +83,6 @@ public class JavaStreams {
         //The Allman Brothers
         //The Rolling Stones
         //The Rolling Stones
-        */
 
         //9. Stream rows from txt file and save to List
         List<String> bands2 = Files.lines(Paths.get("bands.txt"))
@@ -95,8 +94,17 @@ public class JavaStreams {
         //The Rolling Stones
         //The Allman Brothers
         //The Rolling Stones
+        */
 
+        //10. Stream rows from CSV file and count
+        Stream<String> rows1 = Files.lines(Paths.get("data.txt"));
+        int rowCount = (int) rows1
+                .map(x -> x.split(","))
+                .filter(x -> x.length == 3)
+                .count();
 
+        System.out.println(rowCount + " rows.");
+        rows1.close();
    }
 
 
