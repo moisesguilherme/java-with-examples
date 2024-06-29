@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -51,7 +52,7 @@ public class JavaStreams {
 
         //Zana
         //Zelinda
-        */
+
 
         // 6. Average of squares of an int array
         Arrays.stream(new int[] {2, 4, 6, 8, 10})
@@ -59,7 +60,15 @@ public class JavaStreams {
                 .average()
                 .ifPresent(System.out::println);
         // 44.0
+        */
 
+        // 7. Stream from List, filter and print
+        List<String> people = Arrays.asList("Alex", "Bruno", "Sara" , "Amanda", "Hans");
+        people
+            .stream()
+            .map(String::toLowerCase)
+            .filter(x -> x.startsWith("a"))
+            .forEach(System.out::println);
 
    }
 
