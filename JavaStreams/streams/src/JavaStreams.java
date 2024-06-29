@@ -1,11 +1,9 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class JavaStreams {
@@ -155,7 +153,7 @@ public class JavaStreams {
                 .reduce(0.0, (Double a, Double b) -> a + b);
         System.out.println("Total = " + total);
         //Total = 13.600000000000001
-         */
+
 
         // 13.1 - Reduction
         // O método reduce é usado para combinar os elementos do stream em um único valor.
@@ -165,6 +163,14 @@ public class JavaStreams {
 
         System.out.println("Sum = " + sum);
         // Sum = 15
+         */
+
+        //14. Reduction - summary statitics
+        IntSummaryStatistics summary = IntStream.of(7, 2, 19, 88, 73, 4, 10)
+                .summaryStatistics();
+        System.out.println(summary);
+
+        // IntSummaryStatistics{count=7, sum=203, min=2, average=29.000000, max=88}
    }
 
 
