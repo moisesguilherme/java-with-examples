@@ -1,7 +1,9 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -112,7 +114,6 @@ public class JavaStreams {
         System.out.println(rowCount + " rows.");
         rows1.close();
         //5 rows.
-        */
 
         //11. Stream rows from CSV file, parse data from rows
         Stream<String> rows2 = Files.lines(Paths.get("data.txt"));
@@ -126,6 +127,28 @@ public class JavaStreams {
         //B 17 2.8
         //D 23 2.7
         //F 18 3.4
+        */
+
+        //12. Stream rows form CSV file, store fields in HashMap
+        Stream<String> rows3 = Files.lines(Paths.get("data.txt"));
+        Map<String, Integer> map = new HashMap<>();
+        map = rows3
+                .map(x -> x.split(","))
+                .filter(x -> x.length == 3)
+                .filter(x -> Integer.parseInt(x[1]) > 15)
+                .collect(Collectors.toMap(
+                        x -> x[0],
+                        x -> Integer.parseInt(x[1]) ));
+        rows3.close();
+
+        for(String key: map.keySet()) {
+            System.out.println(key + " " + map.get(key));
+        }
+
+        //B 17
+        //D 23
+        //F 18
+
    }
 
 
