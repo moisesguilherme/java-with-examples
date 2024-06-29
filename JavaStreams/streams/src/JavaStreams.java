@@ -8,7 +8,19 @@ public class JavaStreams {
         IntStream
               .range(1, 10)
               .forEach(System.out::print);
+        //123456789
+
+        System.out.println();
+
+        // 2. Integer Stream with skip
+        IntStream
+                .range(1, 10)
+                .skip(5)
+                .forEach(x -> System.out.print(x));
+        //6789
+
+
     }
-    //output
-    //123456789
+
+
 }
