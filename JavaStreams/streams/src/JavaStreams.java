@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -127,7 +128,7 @@ public class JavaStreams {
         //B 17 2.8
         //D 23 2.7
         //F 18 3.4
-        */
+
 
         //12. Stream rows form CSV file, store fields in HashMap
         Stream<String> rows3 = Files.lines(Paths.get("data.txt"));
@@ -140,7 +141,6 @@ public class JavaStreams {
                         x -> x[0],
                         x -> Integer.parseInt(x[1]) ));
         rows3.close();
-
         for(String key: map.keySet()) {
             System.out.println(key + " " + map.get(key));
         }
@@ -149,6 +149,22 @@ public class JavaStreams {
         //D 23
         //F 18
 
+
+        // 13. Reduction - sum
+        double total = Stream.of(7.3, 1.5, 4.8)
+                .reduce(0.0, (Double a, Double b) -> a + b);
+        System.out.println("Total = " + total);
+        //Total = 13.600000000000001
+         */
+
+        // 13.1 - Reduction
+        // O método reduce é usado para combinar os elementos do stream em um único valor.
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        int sum = numbers.stream()
+                        .reduce(0, (a,b) -> a + b);
+
+        System.out.println("Sum = " + sum);
+        // Sum = 15
    }
 
 
