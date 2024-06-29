@@ -1,10 +1,11 @@
+import java.util.Arrays;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class JavaStreams {
 
     public static void main(String[] args) {
-
+        /*
         // 1. Integer Stream
         IntStream
             .range(1, 10)
@@ -38,6 +39,18 @@ public class JavaStreams {
                 .findFirst()
                 .ifPresent(System.out::println);
         // Alberto
+         */
+
+        // 5. Stream from Array, sort and filter
+        String[] names = {"Annita", "Zelinda", "Alzira", "Kiko", "Zana"};
+        Arrays.stream(names)
+                //.peek(name -> System.out.println("Antes do filter: " + name)) // Debug
+                .filter(x -> x.startsWith("Z"))
+                .sorted()
+                .forEach(System.out::println);
+
+        //Zana
+        //Zelinda
    }
 
 
